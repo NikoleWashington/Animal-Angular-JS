@@ -1,0 +1,31 @@
+<h2>Animals</h2>
+<ul class="animals">
+    <li *ngFor="let animal of animals" 
+        (click)="onSelect(animal)" 
+        [class.selected]="animal === selectedAnimal">
+
+        <span class="badge">{{animal.species}}</span>
+        {{animal.name}}
+        <i>{{animal.description}}</i>
+    </li>
+</ul>
+<!-- selectedAnimal is in animals.components.ts -->
+<!--This is where we bind the input box to a variable
+    [(ngModel)] is two-way binding. ngModel import is a form
+    []flowing from Angular to webpage () flowing in from webpage
+    You must got to app.module.ts and import FormsModule
+    and add FormsModule to "imports: " at the bottom-->
+
+<div *ngIf="selectedAnimal">
+    <h2>{{selectedAnimal.name}} Details</h2>
+    <div><span>Name: </span>{{selectedAnimal.name}}</div>
+    <div><span>Species: </span>{{selectedAnimal.species}}</div>
+    <div><span>Sound: </span>{{selectedAnimal.sound}}</div>
+        <label>Description:
+            <input [(ngModel)]="selectedAnimal.description"  placeholder="Description"/>
+        </label>
+</div>
+
+
+
+
